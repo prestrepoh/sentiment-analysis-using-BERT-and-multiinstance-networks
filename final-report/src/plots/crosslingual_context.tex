@@ -1,0 +1,18 @@
+\begin{figure}
+\begin{tikzpicture}
+\begin{axis}[
+    barplot,
+    symbolic x coords={en_c, de_c, empty, en_s, de_s},
+    xtick=data,
+    xticklabels={amazon EN, amazon DE, amazon EN, amazon DE},
+    ]
+\addplot[fill=TUMBlau] coordinates {(en_c,52.7) (de_c,53.1) (en_s,48.6) (de_s,52.4)};
+\addplot[fill=TUMBlauHell] coordinates {(en_c,52.6) (de_c,48.9) (en_s,48.2) (de_s,50.4)};
+\scorelegend
+\end{axis}
+	
+\end{tikzpicture}
+
+\caption{Cross-lingual {\tt amazon EN-amazon EN} and {\tt amazon EN-amazon DE}: comment-level context (left) and sentence-level context (right).}
+\label{crosslingual_context}
+\end{figure}

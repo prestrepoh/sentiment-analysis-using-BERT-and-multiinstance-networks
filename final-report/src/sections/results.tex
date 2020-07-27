@@ -1,0 +1,21 @@
+We were using both micro and macro F1 scores as target metrics.
+\subsection{Monolingual}
+We trained our network on BERT base embeddings for two experiments: {\tt amazon EN-amazon EN} and {\tt amazon EN-organic}. The main interest was in comparing fine-tuned and not fine-tuned models. \\ 
+\input{plots/monolingual_finetune}
+As you can see in Figure \ref{monolingual_finetune}, training only on the {\bf amazon EN}  yields poor results for the {\bf organic}, while fine-tuning on the {\bf organic} significantly drops the performance on the {\bf amazon EN}. Such effect may occur because comments in {\bf amazon} EN and {\bf organic} have different structure or they've been annotated in slightly different ways. \\
+Figure \ref{monolingual_finetune} shows that we should not fine-tune the model if we want to get the best results for {\bf amazon EN}. Thus, from now on experiment {\tt amazon~EN-organic} will always assume that fine-tuning on {\bf organic} was performed; experiment {\tt amazon EN-amazon EN} -- that it was not. \\
+\input{plots/monolingual_results}
+In Figure \ref{monolingual_results} you can see the results for all the monolingual experiments. The plots show that task {\tt organic-organic} is easier than {\tt amazon~EN-organic} not only for our model but for the baselines as well. Again, it may be the evidence of some notable distinctions between {\bf amazon EN} and {\bf organic} datasets. \\
+\subsection{Cross-lingual}
+Figure \ref{crosslingual_results} shows the results for our cross-lingual experiments performed on different initial embeddings. We can see that for the first two experiments all the embeddings produced similar results. Interestingly, although {\bf amazon DE} was used only as a test set, all the embeddings yielded better F1-micro scores on the {\tt amazon EN-amazon DE} then on the {\tt amazon EN-amazon DE}. Also, Textblob outperformed both NLTK and SVM as well. Possibly, this result could be explained by the quality of {\bf amazon DE} and the features of the German language --- for example, one could suggest that Germans express their opinions in a clearer way. \\
+\input{plots/crosslingual_results}
+\subsection{Different context level embeddings}
+In our next experiment, we compared two models trained on BERT multilingual embeddings with different levels of context: "comment as a context"\ and "sentence as a context". As was described in section \ref{contexLeveLEmbeddings}, for getting valid embeddings we had to discard a large portion of the data. Thus, the results in the Figure \ref{crosslingual_context} for the {\tt amazon EN-amazon EN} are worse than the ones shows in the Figure \ref{crosslingual_results}. \\
+Note that comment-level context coincides with sentence-level context for comments having only one sentence. For this reason, we didn't run this experiment for the {\bf organic} dataset. \\
+As you can see in Figure \ref{crosslingual_context}, for our task comment-level context didn't cause any significant improvement in the results. \\
+
+\input{plots/crosslingual_context}
+\subsection{Two-class}
+As our last step, we trained a model for predicting one of the two sentiments: {\it negative} or {\tt positive}. 
+\input{plots/two_class_results}
+Figure \ref{two_class_results} shows that for all the experiments reducing the number of classes triggers major improvements in F1-macro score. Similarly to the Figure \ref{crosslingual_results}, for the two-class problem {\tt amazon EN-amazon DE} produces better results than {\tt amazon EN-amazon EN}.

@@ -1,0 +1,112 @@
+%%
+% TUM Corporate Design LaTeX Templates
+% Based on the templates from https://www.tum.de/cd
+%
+% Feel free to join development on
+% https://gitlab.lrz.de/tum-templates/templates
+% and/or to create an issue in case of trouble.
+%
+% tum-article class for scientific articles, reports, exercise sheets, ...
+%
+%%
+
+\documentclass[twocolumn]{tum-article}
+
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{lipsum}
+
+\pgfplotsset{width=9cm,compat=1.15}
+\usepackage{tum-base}
+\usepackage{packages/pgf-pie/pgf-pie}
+\usepackage{subcaption}
+\usepackage[labelformat=parens,labelsep=quad,skip=3pt]{caption}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\usepackage{pgfplots}
+\pgfplotsset{
+    barplot/.style={
+        ybar,
+        ymin=0,
+        ymax=100,
+        height=4cm,
+        enlargelimits=0.15,
+        ymajorgrids,
+        ytick={0,25,50,75,100},
+        xtick=data,
+        xticklabel style={font=\scriptsize\tt},
+        legend style={at={(0.5,-0.3)}, anchor=north,legend columns=-1},
+    },
+    barplot_mono/.style={
+        barplot,
+        symbolic x coords={milnet, empty, swn, vader, nltk, svm},
+        xticklabels={,,,,,}
+    },    
+    barplot_en/.style={
+        barplot,
+        symbolic x coords={bert, roberta, xling, empty, nltk, svm},
+        xticklabels={,,,,,}
+    },
+    barplot_de/.style={
+        barplot,
+        symbolic x coords={bert, roberta, xling, empty, textblob},
+        xticklabels={,,,,}
+    },
+}
+\newcommand{\scorelegend}{\legend{F1-micro, F1-macro}}
+
+\newcommand{\dataORG}{{\bf organic}}
+\newcommand{\dataEN}{{\bf amazon EN}}
+\newcommand{\dataDE}{{\bf amazon DE}}
+\newcommand{\taskORGORG}{{\tt organic-organic}}
+\newcommand{\taskORG}{{\tt amazon EN-organic}}
+\newcommand{\taskEN}{{\tt amazon EN-amazon EN}}
+\newcommand{\taskDE}{{\tt amazon EN-amazon DE}}
+
+
+\title{Sentiment Analysis Using BERT and Multi-Instance Learning}
+\author{Burak Iryna\authormark{1},
+  Restrepo Pablo\authormark{2}}
+
+\email{iryna.burak@tum.de, pablo.restrepo@tum.de}
+
+\affil[1]{Department of Mathematics, Technical University of Munich (TUM),
+  Boltzmannstr. 3, 85748 Garching, Germany}
+\affil[2]{Department of Informatics, Technical University of Munich (TUM),
+  Boltzmannstr. 3, 85748 Garching, Germany}
+
+\date{31 July 2020}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  We consider the task of sentence-level sentiment analysis for data coming from the organic reviews domain. In this project, we used Multi-Instance Learning Networks combined with various initial sentiment embeddings to explore both monolingual and cross-lingual settings. Additionally, we conducted experiments on the simplified task by dropping one of the classes.
+\end{abstract}
+
+\section{Introduction}
+\input{sections/introduction}
+
+\section{Theory}
+\input{sections/theory}
+
+\section{Experimental Setup}
+\input{sections/setup}
+
+\section{Results}
+\input{sections/results}
+
+\section{Conclusions}
+\input{sections/conclusions}
+
+\section*{Acknowledgements}
+\input{sections/acknowledgements}
+
+\bibliographystyle{apalike}
+\bibliography{literature}
+
+\end{document}

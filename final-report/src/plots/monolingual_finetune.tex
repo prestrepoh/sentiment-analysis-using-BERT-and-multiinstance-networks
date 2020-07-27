@@ -1,0 +1,17 @@
+\begin{figure}[h]
+\begin{tikzpicture}
+
+\begin{axis}[
+    barplot,
+    symbolic x coords={am_f, or_f, empty, am_nf, or_nf},
+    xticklabels={amazon EN, organic, amazon EN, organic},
+    ]
+\addplot[fill=TUMBlau] coordinates {(am_f,45.1) (or_f,61.5) (am_nf,53.1) (or_nf,41.8)};
+\addplot[fill=TUMBlauHell] coordinates {(am_f,44) (or_f,61.7) (am_nf,52.7) (or_nf,37.3)};
+\scorelegend
+\end{axis}
+
+\end{tikzpicture}
+\caption{Monolingual {\tt amazon EN-amazon EN} and {\tt amazon EN-organic}: with fine-tuning (left) and without fine-tuning (right).}
+\label{monolingual_finetune}
+\end{figure}

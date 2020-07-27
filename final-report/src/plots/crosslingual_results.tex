@@ -1,0 +1,40 @@
+\begin{figure}[h]
+\begin{tikzpicture}
+
+\begin{axis}[
+    barplot_en,
+    name=en_en,
+    ]
+\addplot[fill=TUMBlau] coordinates {(bert, 48.1) (roberta, 49.3) (xling, 51.6) (nltk, 38.2) (svm, 47.4)};
+\addplot[fill=TUMBlauHell] coordinates {(bert, 48.2) (roberta, 48.9) (xling, 51.2) (nltk, 37) (svm, 47.4)};
+\end{axis}
+
+
+\begin{axis}[
+    barplot_en,
+    name=en_org,
+    at=(en_en.below south),
+    anchor=above north,
+    xticklabels={BERT, RoBERTa, XLING, NLTK, SVM},
+    ]
+\addplot[fill=TUMBlau] coordinates {(bert, 56.6) (roberta, 58.1) (xling, 52.1) (nltk, 35.7) (svm, 37.8)};
+\addplot[fill=TUMBlauHell] coordinates {(bert, 56) (roberta, 55.7) (xling, 49.8) (nltk, 18.8) (svm, 28.3)};
+\end{axis}
+
+\begin{axis}[
+    barplot_de,
+    name=en_de,
+    at=(en_org.below south),
+    anchor=above north,
+    xticklabels={BERT, RoBERTa, XLING, TextBlob},
+    ]
+\addplot[fill=TUMBlau] coordinates {(bert, 50.7) (roberta, 53.8) (xling, 66.4) (textblob, 37.1)};
+\addplot[fill=TUMBlauHell] coordinates {(bert, 41.5) (roberta, 40.2) (xling, 59.3) (textblob, 36.6)};
+
+\scorelegend
+\end{axis}
+
+\end{tikzpicture}
+\caption{Comparison of different multilingual embeddings and baselines: {\tt amazon EN-amazon EN} (top), {\tt amazon EN-organic} (middle) and {\tt amazon~EN-amazon~DE} (bottom)}.
+\label{crosslingual_results}
+\end{figure}

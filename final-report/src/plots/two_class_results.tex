@@ -1,0 +1,38 @@
+\begin{figure}[h]
+\begin{tikzpicture}
+
+\begin{axis}[
+    barplot_en,
+    name=en_en,
+    ]
+\addplot[fill=TUMBlau] coordinates {(bert, 48.2) (roberta, 48.9) (xling, 51.2) (nltk, 37.0) (svm, 47.4)};
+\addplot[fill=TUMBlauHell] coordinates {(bert, 65.1) (roberta, 71.2) (xling, 72.6) (nltk, 54.6) (svm, 65.8)};
+\end{axis}
+
+\begin{axis}[
+    barplot_en,
+    name=en_org,
+    at=(en_en.below south),
+    anchor=above north,
+    xticklabels={BERT, RoBERTa, XLING, NLTK, SVM},
+    ]
+\addplot[fill=TUMBlau] coordinates {(bert, 56.0) (roberta, 55.7) (xling, 49.8) (nltk, 18.8) (svm, 28.3)};
+\addplot[fill=TUMBlauHell] coordinates {(bert, 73.9) (roberta, 75.5) (xling, 83.6) (nltk, 39.5) (svm, 47.3)};
+\end{axis}
+
+\begin{axis}[
+    barplot_de,
+    name=en_de,
+    at=(en_org.below south),
+    anchor=above north,
+    xticklabels={BERT, RoBERTa, XLING, TextBlob},
+    ]
+\addplot[fill=TUMBlau] coordinates {(bert, 41.5) (roberta, 40.2) (xling, 59.3) (textblob, 36.6)};
+\addplot[fill=TUMBlauHell] coordinates {(bert, 69.2) (roberta, 73.0) (xling, 71.5) (textblob, 49.7)};
+\legend{3 classes, 2 classes}
+\end{axis}
+
+\end{tikzpicture}
+\caption{Obtained F1-macro scores for the two-class task: {\tt amazon EN-amazon EN} (top), {\tt amazon EN-organic} (middle) and {\tt amazon~EN-amazon~DE} (bottom)}.
+\label{two_class_results}
+\end{figure}
