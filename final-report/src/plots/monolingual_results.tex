@@ -2,7 +2,7 @@
 
 \begin{tikzpicture}
 
-\begin{axis}[barplot_mono, name=en_en]
+\begin{axis}[barplot_mono, name=en_en, title=\taskEN]
 \addplot[fill=TUMBlau] coordinates {(milnet, 53.1) (swn, 32.9) (vader, 47.3) (nltk, 38.2) (svm, 47.4)};
 \addplot[fill=TUMBlauHell] coordinates {(milnet, 52.7) (swn, 27.4) (vader, 34) (nltk, 37) (svm, 47.4)};
 \end{axis}
@@ -12,6 +12,7 @@
     name=en_org,
     at=(en_en.below south),
     anchor=above north,
+    title=\taskORG
     ]
 \addplot[fill=TUMBlau] coordinates {(milnet, 61.5) (swn, 38.5) (vader, 48) (nltk, 35.7) (svm, 37.8)};
 \addplot[fill=TUMBlauHell] coordinates {(milnet, 61.7) (swn, 37.7) (vader, 44.3) (nltk, 18.8) (svm, 28.3)};
@@ -22,7 +23,7 @@
     name=org_org,
     at=(en_org.below south),
     anchor=above north,
-    xticklabels={MilNet, SWN, VADER, NLTK, SVM},
+    title=\taskORGORG
     ]
 \addplot[fill=TUMBlau] coordinates {(milnet, 60.5) (swn, 38.5) (vader, 48) (nltk, 45) (svm, 45.7)};
 \addplot[fill=TUMBlauHell] coordinates {(milnet, 60.6) (swn, 37.7) (vader, 44.3) (nltk, 43.8) (svm, 43.7)};
@@ -31,6 +32,6 @@
 \end{axis}
 
 \end{tikzpicture}
-\caption{Comparison of MilNet and baselines for the monolingual experiments: {\tt amazon EN-amazon EN} (top), {\tt amazon EN-organic} (middle) and {\tt organic-organic} (bottom)}.
+\caption{Comparison of MilNet and baselines for the monolingual experiments.}
 \label{monolingual_results}
 \end{figure}

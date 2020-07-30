@@ -25,6 +25,7 @@
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
+\usepackage{xspace}
 
 \usepackage{pgfplots}
 \pgfplotsset{
@@ -43,28 +44,40 @@
     barplot_mono/.style={
         barplot,
         symbolic x coords={milnet, empty, swn, vader, nltk, svm},
-        xticklabels={,,,,,}
+        xticklabels={MilNet, SWN, VADER, NLTK, SVM}
     },    
     barplot_en/.style={
         barplot,
         symbolic x coords={bert, roberta, xling, empty, nltk, svm},
-        xticklabels={,,,,,}
+        xticklabels={BERT, RoBERTa, XLING, NLTK, SVM}
     },
     barplot_de/.style={
         barplot,
         symbolic x coords={bert, roberta, xling, empty, textblob},
-        xticklabels={,,,,}
+        xticklabels={BERT, RoBERTa, XLING, TextBlob}
     },
+    barplot_en_en/.style={
+        barplot_en,
+        title=\taskEN,
+    },
+    barplot_en_org/.style={
+        barplot_en,
+        title=\taskORG,
+    },
+    barplot_en_de/.style={
+        barplot_de,
+        title=\taskDE,
+    }
 }
 \newcommand{\scorelegend}{\legend{F1-micro, F1-macro}}
 
-\newcommand{\dataORG}{{\bf organic}}
-\newcommand{\dataEN}{{\bf amazon EN}}
-\newcommand{\dataDE}{{\bf amazon DE}}
-\newcommand{\taskORGORG}{{\tt organic-organic}}
-\newcommand{\taskORG}{{\tt amazon EN-organic}}
-\newcommand{\taskEN}{{\tt amazon EN-amazon EN}}
-\newcommand{\taskDE}{{\tt amazon EN-amazon DE}}
+\newcommand{\dataORG}{{\bf organic}\xspace}
+\newcommand{\dataEN}{{\bf amazon~EN}\xspace}
+\newcommand{\dataDE}{{\bf amazon~DE}\xspace}
+\newcommand{\taskORGORG}{{\tt organic-organic}\xspace}
+\newcommand{\taskORG}{{\tt amazon~EN-organic}\xspace}
+\newcommand{\taskEN}{{\tt amazon~EN-amazon~EN}\xspace}
+\newcommand{\taskDE}{{\tt amazon~EN-amazon~DE}\xspace}
 
 
 \title{Sentiment Analysis Using BERT and Multi-Instance Learning}
@@ -85,7 +98,7 @@
 \maketitle
 
 \begin{abstract}
-  We consider the task of sentence-level sentiment analysis for data coming from the organic reviews domain. In this project, we used Multi-Instance Learning Networks combined with various initial sentiment embeddings to explore both monolingual and cross-lingual settings. Additionally, we conducted experiments on the simplified task by dropping one of the classes.
+  We consider the task of sentence-level sentiment analysis for data coming from the organic reviews domain. In this project, we used Multi-Instance Learning Networks combined with various initial sentence embeddings to explore both monolingual and cross-lingual settings. Additionally, we conducted experiments on a simplified task by dropping the neutral class.
 \end{abstract}
 
 \section{Introduction}
